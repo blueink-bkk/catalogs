@@ -1,11 +1,16 @@
 ## jpc-catalogs-admin
 
-### DB-Architecture
+### Architecture
 ##### object-types:
 - _edition_ : content-item stored at level 1, ex: "u2013_fr" {company/publisher}
 - _volume-cat_ : content-item representing a catalog : {yp, lang, edition}
 - _section-pdf_ : content-item - a pdf file.
 - _pdf-page_ : txt record - a page within a pdf file => {pageno, lang, fti, raw_text}
+##### hierarchies:
+- _package_id_ : all items belonging to an app-instance.
+- _context_id_ : used for permission system.
+- _parent_id_ : customized for each object-type.
+
 
 ### xp101-create-new-instance
 - postgres password must be set using `$ export PGPASSWORD='xxxxxx'`
@@ -32,6 +37,23 @@
 
 ### xp106-clean-app-instance
 - remove all content-items (cr_items, cr_revisions, and txt)
+
+### xp107-catalog-directory
+- list all _volume-cat_ found for a given _edition_.
+
+### xp108-pages-directory
+- list all pdf pages found in a given app-folder
+- apply a filter to get only what is related to a language.
+- apply a filter on path.
+
+### xp109-mk-pdf-pages
+- given an app-instance and a path:
+- find all sections-pdf
+- for each section-pdf:
+  - locate pdf file in specified folder.
+  - check fsize and mtime
+  - if unchanged and no 'force' => continue next pdf.
+  - commit data (new content-item or new revision)
 
 ### XLSX columns description.
 
