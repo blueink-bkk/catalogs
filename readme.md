@@ -57,7 +57,10 @@
   - locate pdf file in specified folder.
   - check fsize and mtime
   - if unchanged and no 'force' => continue next pdf.
-  - commit data : a new revision
+  - remove existing txt (pages)
+  - split pdf into pages, extract raw text.
+  - insert a txt record for each page, a trigger creates the FTI.
+  - commit data : a new revision for section-pdf with updated {fsize, timestamp}
 ```
 
 
