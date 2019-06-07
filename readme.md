@@ -120,7 +120,7 @@ not provide shell access.`
 
   - see https://kbroman.org/github_tutorial/pages/first_time.html
 
-##### Also:
+###### Also use `git@github.com` instead of `https`:
 ```
 $ git remote set-url origin git@github.com:abatros/jpc-catalogs-admin.git
 $ git remote -v
