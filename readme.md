@@ -47,13 +47,19 @@
 - apply a filter on path.
 
 ### xp109-mk-pdf-pages
-- given an app-instance and a path:
-- find all sections-pdf
-- for each section-pdf:
+- given an app-instance and a path
+- split pdf-file into pages using pdflib => raw-text.
+- create a txt record for each pdf-page
+- postgres has a trigger to create FTI on each raw-text
+
+```
+- for each section-pdf found:
   - locate pdf file in specified folder.
   - check fsize and mtime
   - if unchanged and no 'force' => continue next pdf.
-  - commit data (new content-item or new revision)
+  - commit data : a new revision
+```
+
 
 ### XLSX columns description.
 
