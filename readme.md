@@ -34,6 +34,7 @@ const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheet1],{
 
 ## NOTES:
 
-### about Hi username! You've successfully authenticated, but Github does
-not provide shell access.
+about `Hi username! You've successfully authenticated, but Github does
+not provide shell access.`
+
   - see `https://kbroman.org/github_tutorial/pages/routine.html`
