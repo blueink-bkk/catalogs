@@ -3,16 +3,16 @@
 - each company (publisher) has one or more catalogs (physical printed volume)
   in several languages.
 - search is done in a specific language: French, English, German, Russian, etc...
-- the _search query_ must follow the syntax specified by Postgres `ts_query`;
+- the _search query_ must follow the syntax specified by Postgres `ts_query;`
 - the search engine will ignore the documents in a language different from the search query.
-- there is no search accross documents in differents languages, therefore we will
-  use specific app-instances for each version (language) of a catalog
+- there is no searches accross documents in differents languages, therefore
+  specific app-instances will be used for each version (language) of a catalog
 - an app-instance defines a _search domain_, if we expect to search into
   several catalogs from several publishers, they must cohabitate in the
   same app-instance.
-  This is not the case for jpc-catalogs, there is no cross search between catalogs
+  This is not the case for jpc-catalogs, there is no cross searches between catalogs
   in different companies, so each app-instance will have name like "u2013_fr",
-  i.e: Ultimheat French edition 2013.
+  i.e: _Ultimheat French edition 2013._
 
 
 ## jpc-catalogs-admin
@@ -53,7 +53,10 @@
 - and at root level : (parent_id = -100)
 - note: a package can be deployed at any node in openacs.
 
-### xp106-clean-app-instance
+### xp105-app-instance-xray
+- list all objects under app-instance package-id.
+
+### xp106-app-instance-cleanup
 - remove all content-items (cr_items, cr_revisions, and txt)
 
 ### xp107-catalog-directory
@@ -80,6 +83,11 @@
   - insert a txt record for each page, a trigger creates the FTI.
   - commit data : a new revision for section-pdf with updated {fsize, timestamp}
 ```
+
+### xp116-import-yaml
+- edition is instance-name.
+- h1 are the volumes-cat
+- h2 are the sections-pdf
 
 
 ### XLSX columns description.
@@ -111,6 +119,16 @@ not provide shell access.`
 > If it says something like the following, it worked:
 
   - see https://kbroman.org/github_tutorial/pages/first_time.html
+
+##### Also:
+```
+$ git remote set-url origin git@github.com:abatros/jpc-catalogs-admin.git
+$ git remote -v
+origin	git@github.com:abatros/jpc-catalogs-admin.git (fetch)
+origin	git@github.com:abatros/jpc-catalogs-admin.git (push)
+$ git push
+Everything up-to-date
+```
 
 ## _sequential_ YAML input
 
