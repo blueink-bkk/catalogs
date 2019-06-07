@@ -1,3 +1,9 @@
+# jpc-catalogs-admin
+
+## xp101-create-new-instance
+- postgres password must be set using `$ export PGPASSWORD='xxxxxx'`
+
+
 ```
 const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheet1],{
     header:[
