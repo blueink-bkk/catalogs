@@ -1,8 +1,17 @@
-# jpc-catalogs-admin
+## jpc-catalogs-admin
 
-## xp101-create-new-instance
+### xp101-create-new-instance
 - postgres password must be set using `$ export PGPASSWORD='xxxxxx'`
+- uses postgres function `cms_instance__new(instance-name)`
+```
+    locate all packages:package_type = 'cms'
+    exit if instance-name already exist.
+    create instance using pg-function `apm_package__new()`
+    create application folder using pg-function `content_folder__new(root-folder:-100)`
+```
 
+
+### XLSX columns description.
 
 ```
 const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheet1],{
