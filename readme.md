@@ -89,6 +89,13 @@
 - h1 are the volumes-cat
 - h2 are the sections-pdf
 
+### xp117-sections-pdf-directory
+- list all section for a given instance-name
+
+### xp118-purge-all-revision
+- purge all revisions for a given instance-name
+
+
 
 ### XLSX columns description.
 
