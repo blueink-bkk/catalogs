@@ -37,4 +37,6 @@ const json = XLSX.utils.sheet_to_json(workbook.Sheets[sheet1],{
 about `Hi username! You've successfully authenticated, but Github does
 not provide shell access.`
 
+> If it says something like the following, it worked:
+
   - see https://kbroman.org/github_tutorial/pages/first_time.html
