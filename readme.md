@@ -1,5 +1,12 @@
 ## jpc-catalogs-admin
 
+### DB-Architecture
+##### object-types:
+- _edition_ : content-item stored at level 1, ex: "u2013_fr" {company/publisher}
+- _volume-cat_ : content-item representing a catalog : {yp, lang, edition}
+- _section-pdf_ : content-item - a pdf file.
+- _pdf-page_ : txt record - a page within a pdf file => {pageno, lang, fti, raw_text}
+
 ### xp101-create-new-instance
 - postgres password must be set using `$ export PGPASSWORD='xxxxxx'`
 - uses postgres function `cms_instance__new(instance-name)`
@@ -15,9 +22,16 @@
 - a simple wrapper around `apm_package__delete(`package_id`);`
 
 ### xp103-import-xlsx
-- convert yaml input into a _sequential-json_.
-- _sequential-json_: only 1 level with {edition, h1, h2} see ex below.
+- convert xlsx input into a _sequential-yaml_.
+- _sequential-yaml_: only 1 level with {edition, h1, h2} see ex below.
 
+### xp104-list-app-instances
+- find all app-instances and associated app-folder : package_key = 'cms'
+- and at root level : (parent_id = -100)
+- note: a package can be deployed at any node in openacs.
+
+### xp106-clean-app-instance
+- remove all content-items (cr_items, cr_revisions, and txt)
 
 ### XLSX columns description.
 
@@ -49,7 +63,7 @@ not provide shell access.`
 
   - see https://kbroman.org/github_tutorial/pages/first_time.html
 
-## YAML input
+## _sequential_ YAML input
 
 
 ```
