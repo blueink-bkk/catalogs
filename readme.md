@@ -1,15 +1,33 @@
+## jpc-catalogs
+
+- each company (publisher) has one or more catalogs (physical printed volume)
+  in several languages.
+- search is done in a specific language: French, English, German, Russian, etc...
+- the _search query_ must follow the syntax specified by Postgres `ts_query`;
+- the search engine will ignore the documents in a language different from the search query.
+- there is no search accross documents in differents languages, therefore we will
+  use specific app-instances for each version (language) of a catalog
+- an app-instance defines a _search domain_, if we expect to search into
+  several catalogs from several publishers, they must cohabitate in the
+  same app-instance.
+  This is not the case for jpc-catalogs, there is no cross search between catalogs
+  in different companies, so each app-instance will have name like "u2013_fr",
+  i.e: Ultimheat French edition 2013.
+
+
 ## jpc-catalogs-admin
 
 ### Architecture
 ##### object-types:
-- _edition_ : content-item stored at level 1, ex: "u2013_fr" {company/publisher}
-- _volume-cat_ : content-item representing a catalog : {yp, lang, edition}
+- _edition_ : app-instance type 'jpc-catalogs', ex: "u2013_fr" {company/publisher, lang}
+- _volume-cat_ : content-item representing a physical or logical hierarchy of divisions
+  each having a specific _path_.
 - _section-pdf_ : content-item - a pdf file.
 - _pdf-page_ : txt record - a page within a pdf file => {pageno, lang, fti, raw_text}
 ##### hierarchies:
 - _package_id_ : all items belonging to an app-instance.
 - _context_id_ : used for permission system.
-- _parent_id_ : customized for each object-type.
+- _parent_id_ : TBD - customized for each object-type.
 
 
 ### xp101-create-new-instance
